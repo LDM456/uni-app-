@@ -1,0 +1,15 @@
+/* 公共布局样式 */
+.cell_list_c {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.cell_list_between {
+	justify-content: space-between;
+}
+
+.cell_list_center {
+	justify-content: center;
+}
+
