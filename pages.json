@@ -3,86 +3,106 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"app-plus":{
-					"scrollIndicator":"none",//隐藏滚动条 
-					"titleNView":{
+				"app-plus": {
+					"scrollIndicator": "none", //隐藏滚动条 
+					"titleNView": {
 						// 配置搜索框
-						"searchInput":{
-							"align":"center",
-							"placeholder":"搜索糗事",
-							"placeholderColor":"#bbbbbb",
-							"backgroundColor":"#f7f7f7",
-							"borderRadius":"5px",
-							"disabled":true
+						"searchInput": {
+							"align": "center",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#bbbbbb",
+							"backgroundColor": "#f7f7f7",
+							"borderRadius": "5px",
+							"disabled": true
 						},
 						// 配置左右按钮
-						"buttons":[
-							{
-								"color":"#ff9d29",
-								"colorPressed":"#bbb",
-								"fontSize":"22px",
-								"float":"left",
-								"fontSrc":"/static/iconfont/iconfont.ttf",
-								"text":"\ue609"
-							},{
-								"color":"#000000",
-								"colorPressed":"#bbb",
-								"fontSize":"22px",
-								"float":"right",
-								"fontSrc":"/static/iconfont/iconfont.ttf",
-								"text":"\ue653"
-							}
-						]
+						"buttons": [{
+							"color": "#ff9d29",
+							"colorPressed": "#bbb",
+							"fontSize": "22px",
+							"float": "left",
+							"fontSrc": "/static/iconfont/iconfont.ttf",
+							"text": "\ue609"
+						}, {
+							"color": "#000000",
+							"colorPressed": "#bbb",
+							"fontSize": "22px",
+							"float": "right",
+							"fontSrc": "/static/iconfont/iconfont.ttf",
+							"text": "\ue653"
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/news/news",
+			"style": {}
+		}, {
+			"path": "pages/notice/notice",
+			"style": {}
+		}, {
+			"path": "pages/mine/mine",
+			"style": {}
+		}, {
+			"path": "pages/search/search",
+			"style": {
+				"app-plus": {
+					"scrollIndicator": "none", //隐藏滚动条 
+					"titleNView": {
+					"autoBackButton":false,//隐藏返回按钮	
+						// 配置搜索框
+						"searchInput": {
+							"align": "left",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#bbbbbb",
+							"backgroundColor": "#f7f7f7",
+							"borderRadius": "5px",
+							"disabled": false
+						},
+						// 配置左右按钮
+						"buttons": [{
+							"color": "#000000",
+							"colorPressed": "#bbb",
+							"fontSize": "14px",
+							"float": "right",
+							"text": "取消"
+						}]
 					}
 				}
 			}
 		}
-	    ,{
-            "path" : "pages/news/news",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/notice/notice",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/mine/mine",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "微糗事百科",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
 	},
-	"tabBar":{
-		"color":"#CCCCCC",
-		"selectedColor":"#f4ea2a",
-		"backgroundColor":"#FFFFFF",
-		"borderStyle":"black",
-		"list":[
-			{
-				"pagePath":"pages/index/index",
-				"text":"首页",
-				"iconPath":"static/tabbar/index.png",
-				"selectedIconPath":"static/tabbar/indexed.png"
-			},{
-				"pagePath":"pages/news/news",
-				"text":"动态",
-				"iconPath":"static/tabbar/news.png",
-				"selectedIconPath":"static/tabbar/newsed.png"
-			},{
-				"pagePath":"pages/notice/notice",
-				"text":"小纸条",
-				"iconPath":"static/tabbar/notice.png",
-				"selectedIconPath":"static/tabbar/noticed.png"
-			},{
-				"pagePath":"pages/mine/mine",
-				"text":"我的",
-				"iconPath":"static/tabbar/mine.png",
-				"selectedIconPath":"static/tabbar/mined.png"
-			}
-		]
+	"tabBar": {
+		"color": "#CCCCCC",
+		"selectedColor": "#f4ea2a",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "static/tabbar/index.png",
+			"selectedIconPath": "static/tabbar/indexed.png"
+		}, {
+			"pagePath": "pages/news/news",
+			"text": "动态",
+			"iconPath": "static/tabbar/news.png",
+			"selectedIconPath": "static/tabbar/newsed.png"
+		}, {
+			"pagePath": "pages/notice/notice",
+			"text": "小纸条",
+			"iconPath": "static/tabbar/notice.png",
+			"selectedIconPath": "static/tabbar/noticed.png"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"text": "我的",
+			"iconPath": "static/tabbar/mine.png",
+			"selectedIconPath": "static/tabbar/mined.png"
+		}]
 	}
 }

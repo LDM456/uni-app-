@@ -1,46 +1,44 @@
 <template>
-	<view class="index-list">
-		<view class="list-cell" v-for="(item,index) in list" :key="index">
-			<view class="cell_list_c cell_list_between cell-top">
+	<view class="list-cell animated bounceIn">
+		<view class="cell_list_c cell_list_between cell-top">
+			<view>
+				<image :src="item.userPic" mode="widthFix" lazy-load></image>
+				<text>{{item.userName}}</text>
+			</view>
+			<view class="cell_list_c cell_list_center attention_btn">
+				<view class="cell_list_c cell_list_center" v-show="!item.isAttention" @tap="setAttention(index)">
+					<view class="icon iconfont icon-zengjia"></view>关注
+				</view>
+				<view class="icon iconfont icon-guanbi"></view>
+			</view>
+		</view>
+		<view class="cell-text" @tap="goToDetail()">{{item.titleText}}</view>
+		<view class="cell_list_c cell_list_center cell-imgage" @tap="goToDetail()">
+			<image :src="item.titlePic" mode="widthFix" lazy-load></image>
+			<view class="icon iconfont icon-bofang cell_play"></view>
+			<view class="cell_list_c cell_play_num">
+				{{item.playNumber}}次播放 {{item.palyTime}}
+			</view>
+		</view>
+		<view class="cell_list_c cell_list_between cell-bottom">
+			<view class="cell_list_c lolStyle">
+				<view :class="{active:item.infoNum.userFlag == 1}" @tap="clickTap('lol')">
+					<view class="icon iconfont icon-icon_xiaolian-mian"></view>
+					{{item.infoNum.lolNum}}
+				</view>
+				<view :class="{active:item.infoNum.userFlag == 2}" @tap="clickTap('cry')">
+					<view class="icon iconfont icon-kulian"></view>
+					{{item.infoNum.cryingNum}}
+				</view>
+			</view>
+			<view class="cell_list_c">
 				<view>
-					<image :src="item.userPic" mode="widthFix" lazy-load></image>
-					<text>{{item.userName}}</text>
+					<view class="icon iconfont icon-pinglun1"></view>
+					{{item.commentNum}}
 				</view>
-				<view class="cell_list_c cell_list_center attention_btn">
-					<view class="cell_list_c cell_list_center" v-show="item.isAttention">
-						<view class="icon iconfont icon-zengjia"></view>关注
-					</view>
-					<view class="icon iconfont icon-guanbi"></view>
-				</view>
-			</view>
-			<view class="cell-text">{{item.titleText}}</view>
-			<view class="cell_list_c cell_list_center cell-imgage">
-				<image :src="item.titlePic" mode="widthFix" lazy-load></image>
-				<view class="icon iconfont icon-bofang cell_play"></view>
-				<view class="cell_list_c cell_play_num">
-					{{item.playNumber}}次播放 {{item.palyTime}}
-				</view>
-			</view>
-			<view class="cell_list_c cell_list_between cell-bottom">
-				<view class="cell_list_c lolStyle">
-					<view :class="{active:item.infoNum.userFlag == 1}">
-						<view class="icon iconfont icon-icon_xiaolian-mian"></view>
-						{{item.infoNum.lolNum}}
-					</view>
-					<view :class="{active:item.infoNum.userFlag == 2}">
-						<view class="icon iconfont icon-kulian"></view>
-						{{item.infoNum.cryingNum}}
-					</view>
-				</view>
-				<view class="cell_list_c">
-					<view>
-						<view class="icon iconfont icon-pinglun1"></view>
-						{{item.commentNum}}
-					</view>
-					<view>
-						<view class="icon iconfont icon-zhuanfa"></view>
-						{{item.shareNum}}
-					</view>
+				<view>
+					<view class="icon iconfont icon-zhuanfa"></view>
+					{{item.shareNum}}
 				</view>
 			</view>
 		</view>
@@ -50,7 +48,48 @@
 <script>
 	export default {
 		props: {
-			list: Array
+			item: Object,
+			index: Number
+		},
+		methods: {
+			// 点击关注
+			setAttention(index) {
+				this.item.isAttention = true;
+				uni.showToast({
+					title: '关注成功',
+					position: 'center',
+					duration: 2000
+				})
+			},
+			// 点击笑脸和哭脸的切换
+			clickTap(type) {
+				switch (type) {
+					case 'lol':
+						if (this.item.infoNum.userFlag == 1) {
+							return
+						};
+						this.item.infoNum.lolNum++;
+						if (this.item.infoNum.userFlag == 2) {
+							this.item.infoNum.cryingNum--
+						}
+						this.item.infoNum.userFlag = 1
+						break;
+					case 'cry':
+						if (this.item.infoNum.userFlag == 2) {
+							return
+						};
+						this.item.infoNum.cryingNum++;
+						if (this.item.infoNum.userFlag == 1) {
+							this.item.infoNum.lolNum--;
+						}
+						this.item.infoNum.userFlag = 2
+						break;
+				}
+			},
+			// 进入详情页
+			goToDetail() {
+				console.log('进入详情页')
+			}
 		}
 	}
 </script>

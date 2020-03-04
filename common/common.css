@@ -1,3 +1,7 @@
+*{
+	padding: 0;
+	margin: 0;
+}
 /* 公共布局样式 */
 .cell_list_c {
 	display: flex;
