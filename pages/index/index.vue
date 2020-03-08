@@ -191,10 +191,26 @@
 				}
 			});
 		},
+		// 监听原生搜索框点击事件
 		onNavigationBarSearchInputClicked() {
-				uni.navigateTo({
-					url:"../search/search"
-				})
+			uni.navigateTo({
+				url: "../search/search"
+			})
+		},
+		// 监听原生标题导航按钮点击事件
+		onNavigationBarButtonTap(e) {
+			switch (e.index) {
+				case 0:
+					uni.navigateTo({
+						url: ''
+					});
+					break;
+				case 1:
+					uni.navigateTo({
+						url: '../addInput/addInput'
+					});
+					break;
+			}
 		},
 		methods: {
 			// 上拉加载

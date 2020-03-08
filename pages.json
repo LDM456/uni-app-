@@ -49,7 +49,7 @@
 				"app-plus": {
 					"scrollIndicator": "none", //隐藏滚动条 
 					"titleNView": {
-					"autoBackButton":false,//隐藏返回按钮	
+						"autoBackButton": false, //隐藏返回按钮	
 						// 配置搜索框
 						"searchInput": {
 							"align": "left",
@@ -68,6 +68,14 @@
 							"text": "取消"
 						}]
 					}
+				}
+			}
+		}, {
+			"path": "pages/addInput/addInput",
+			"style": {
+				"app-plus": {
+					"scrollIndicator": "none", //隐藏滚动条 
+					"titleNView": false//禁用原生导航栏
 				}
 			}
 		}

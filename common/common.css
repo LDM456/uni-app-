@@ -16,4 +16,10 @@
 .cell_list_center {
 	justify-content: center;
 }
+/* flex居中布局 */
+.flexCenter{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
