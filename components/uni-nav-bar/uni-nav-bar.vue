@@ -139,7 +139,8 @@
 	}
 
 	.uni-nav-bar-right-text {
-		font-size: 28rpx;
+		font-size: 30rpx;
+		font-weight: bold;
 	}
 
 	.uni-navbar__content {
