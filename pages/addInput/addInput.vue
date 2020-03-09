@@ -12,25 +12,80 @@
 		</view>
 		<!-- 上传多图 -->
 		<up-load-image @upload="upload"></up-load-image>
+		<!-- 中间弹出层 -->
+		<uni-popup ref="showpopup" :type="center" >
+			<view class="popup-content">
+				<view class="flexCenter">
+					<image src="../../static/image/addinput.png" mode="widthFix"></image>
+				</view>
+				<view>1、涉及黄色、政治，广告及骚扰信息</view>
+				<view>2、涉及人身攻击</view>
+				<view>3、留联系方式，透露他人隐私</view>
+				<view>一经核实将被封禁，情节严重者永久封禁</view>
+				<button type="primary" @tap="closePopup">朕知道了</button>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopup from '../../components/uni-popup/uni-popup.vue'
 	import upLoadImage from '../../components/common/upLoadImage.vue'
 	import uniNavBar from "../../components/uni-nav-bar/uni-nav-bar.vue"
 	export default {
 		components: {
 			uniNavBar,
-			upLoadImage
+			upLoadImage,
+			uniPopup
 		},
 		data() {
 			return {
 				titleText: '所有人可见',
 				rootText: ['所有人可见', '仅自己可见'],
-				imageList:[]
+				imageList:[],
+				center:'center',
+				isSaveFlag:false,//是否保存的标识
+			}
+		},
+		mounted() {
+			this.popupShow()
+		},
+		onBackPress() {
+			if(!this.isSaveFlag){
+				this.isSave()
+				return true;
 			}
 		},
 		methods: {
+			// 是否保存草稿
+			isSave(){
+				uni.showModal({
+					content:'是否保存为草稿',
+					cancelText:'不保存',
+					confirmText:'保存',
+					success:(res)=> {
+						if(res.confirm){
+							console.log('保存')
+						}else{
+							console.log('不保存')
+						}
+						this.isSaveFlag = true
+						uni.navigateBack({
+							delta:1
+						})
+					}
+				})
+			},
+			// 关闭弹层
+			closePopup(){
+				this.$refs['showpopup'].close()
+			},
+			// 显示弹层
+			popupShow(){
+				this.$nextTick(() => {
+					this.$refs['showpopup'].open()
+				})
+			},
 			// 删除图片
 			delImage(index){
 				uni.showModal({
@@ -80,5 +135,20 @@
 	.uni-textarea {
 		/* border-bottom: 1upx solid #eee; */
 	}
-
+	.popup-content {
+		/* #ifndef APP-NVUE */
+		display: block;
+		/* #endif */
+		background-color: #fff;
+		padding: 15px;
+		font-size: 14px;
+	}
+	.popup-content image{
+		width: 70%;
+	}
+	.popup-content button{
+		color: #171606;
+		background: #ffe934;
+		margin: 10px 0 0 0;
+	}
 </style>
